@@ -4,7 +4,7 @@ module.exports = {
   productAll: () => {
     return new Promise((resolve, reject) => {
       const queryString =
-        "SELECT p.id, p.product_name, p.product_price, c.category_name FROM products AS p JOIN category AS c ON c.id = p.category_id";
+        "SELECT p.id, p.product_name, p.product_price, c.category_name, p.image FROM products AS p JOIN category AS c ON c.id = p.category_id";
       db.query(queryString, (err, data) => {
         if (!err) {
           resolve(data);

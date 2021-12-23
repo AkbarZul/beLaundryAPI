@@ -8,7 +8,7 @@ productRouter.get("/:id", (req, res) => {
   const { id } = req.params;
   const getSingleProduct = new Promise((resolve, reject) => {
     const queryString =
-      "SELECT p.id, p.product_name, p.product_price, p.product_description, c.category_name FROM products AS p JOIN category AS c ON c.id = p.category_id WHERE p.id = ?";
+      "SELECT p.id, p.product_name, p.product_price, p.product_description, p.image, c.category_name FROM products AS p JOIN category AS c ON c.id = p.category_id WHERE p.id = ?";
     db.query(queryString, id, (err, data) => {
       if (!err) {
         resolve(data);

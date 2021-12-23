@@ -15,7 +15,13 @@ module.exports = {
 
   postProduct: (req, res) => {
     const { body } = req;
-    const insertBody = { ...body };
+    console.log(req.files)
+    const filepath = JSON.stringify(
+      req.files.map(
+        (e) => "/images" + "/" + e.filename + " "
+      )
+    );
+    const insertBody = { ...body, image: filepath };
 
     productsModel
       .postProduct(insertBody)
